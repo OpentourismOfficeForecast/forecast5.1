@@ -1,0 +1,36 @@
+<div class="content">
+    <mat-form-field>
+        <input matInput
+               name="date"
+               [(ngModel)]="date"
+               (ngModelChange)="updateData()"
+               [matDatepicker]="picker"
+               placeholder="Datum">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div *ngIf="data; else spinner" fxLayout="row" fxLayoutAlign="space-between">
+        <ngx-charts-bar-vertical-stacked [view]="[600, 400]"
+                                         [results]="data"
+                                         [xAxis]="true"
+                                         [yAxis]="true"
+                                         [legend]="true"
+                                         legendTitle=""
+                                         [showDataLabel]="true">
+        </ngx-charts-bar-vertical-stacked>
+
+        <ngx-charts-heat-map [view]="[600, 400]"
+                             [scheme]="{domain: colors}"
+                             [results]="data"
+                             [xAxis]="true"
+                             [yAxis]="true"
+                             [legend]="true"
+                             legendTitle="">
+        </ngx-charts-heat-map>
+    </div>
+
+    <ng-template #spinner>
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    </ng-template>
+</div>

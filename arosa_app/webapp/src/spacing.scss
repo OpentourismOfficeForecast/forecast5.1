@@ -1,0 +1,47 @@
+// spacing classes according to https://getbootstrap.com/docs/4.0/utilities/spacing/
+
+$modes: (
+  m: 'margin',
+  p: 'padding',
+);
+
+$sides: (
+  t: 'top',
+  b: 'bottom',
+  l: 'left',
+  r: 'right',
+);
+
+$sizes: (
+  0: 0 * 1rem,
+  1: .25 * 1rem,
+  2: .5 * 1rem,
+  3: 1 * 1rem,
+  4: 1.5 * 1rem,
+  5: 3 * 1rem,
+  auto: auto,
+);
+
+@each $modeShort, $mode in $modes {
+  @each $sizeShort, $size in $sizes {
+    @each $sideShort, $side in $sides {
+      .#{$modeShort}#{$sideShort}-#{$sizeShort} {
+        #{$mode}-#{$side}: $size;
+      }
+    }
+
+    .#{$modeShort}x-#{$sizeShort} {
+      #{$mode}-left: $size;
+      #{$mode}-right: $size;
+    }
+
+    .#{$modeShort}y-#{$sizeShort} {
+      #{$mode}-top: $size;
+      #{$mode}-bottom: $size;
+    }
+
+    .#{$modeShort}-#{$sizeShort} {
+      #{$mode}: $size;
+    }
+  }
+}
