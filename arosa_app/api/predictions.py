@@ -42,6 +42,6 @@ def get_predictions(year, month):
 
 
 
-if __name__ == "__main__":
-    get_predictions(2019,10)
+#if __name__ == "__main__":
+#    get_predictions(2019,10)
 
