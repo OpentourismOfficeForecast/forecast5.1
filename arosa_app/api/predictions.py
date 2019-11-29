@@ -9,7 +9,7 @@ def get_predictions(year, month):
     year = Year of month to be predicted, expected format yyyy
     """
     
-    start_date = str(year)+"-"+str(month)+"-"+str(monthrange(year, month)[0])
+    start_date = str(year)+"-"+str(month)+"-01"
     end_date = str(year)+"-"+str(month)+"-"+str(monthrange(year, month)[1])
 
     date_range = pd.date_range(start_date,end_date, freq='D').strftime("%Y-%m-%d").tolist()
@@ -48,6 +48,6 @@ def get_predictions(year, month):
 
 
 
-#if __name__ == "__main__":
-#   get_predictions(8,2019)
+if __name__ == "__main__":
+    get_predictions(2019,10)
 
