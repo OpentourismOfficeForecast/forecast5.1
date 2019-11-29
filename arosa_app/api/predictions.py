@@ -1,6 +1,6 @@
 import pandas as pd
-#import pprint
 from calendar import monthrange
+import numpy as np
 
 
 def get_predictions(year, month):
@@ -14,8 +14,6 @@ def get_predictions(year, month):
 
     date_range = pd.date_range(start_date,end_date, freq='D').strftime("%Y-%m-%d").tolist()
 
-    print(date_range)
-
     # predictfunction
     # ..
     
@@ -24,9 +22,9 @@ def get_predictions(year, month):
     
     for date in date_range:
         
-        pred_mail = 2
-        pred_tel = 5
-        pred_counter = 10
+        pred_mail = np.random.randint(low=1, high=100)
+        pred_tel = np.random.randint(low=1, high=100)
+        pred_counter = np.random.randint(low=1, high=100)
         
         pred_dict = {'date': date,  
                      'predictions':{'mail' : pred_mail, 
@@ -35,14 +33,10 @@ def get_predictions(year, month):
                                     }
                      }
         
-
-    
+   
         pred_arr.append(pred_dict)
-    
 
-        
-    #pprint.pprint(pred_arr)
-    #pprint.pprint(date_range)
+    print(pred_arr)
     
     return pred_arr
 

@@ -11,3 +11,4 @@ six==1.13.0
 Werkzeug==0.16.0
 pandas==0.23.0
 calendar==1.11.14
+numpy==1.14.3
