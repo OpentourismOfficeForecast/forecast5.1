@@ -1,5 +1,5 @@
 import pandas as pd
-import pprint
+#import pprint
 from calendar import monthrange
 
 
@@ -41,13 +41,13 @@ def get_predictions(year, month):
     
 
         
-    pprint.pprint(pred_arr)
+    #pprint.pprint(pred_arr)
     #pprint.pprint(date_range)
     
     return pred_arr
 
 
 
-#if __name__ == "__main__":
-#    get_predictions(8,2019)
+if __name__ == "__main__":
+   get_predictions(8,2019)
 
