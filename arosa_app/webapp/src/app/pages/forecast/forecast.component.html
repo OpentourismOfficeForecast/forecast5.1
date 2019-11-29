@@ -2,32 +2,37 @@
     <mat-form-field>
         <input matInput
                name="date"
-               [(ngModel)]="date"
+               [ngModel]="date"
                (ngModelChange)="updateData()"
-               [matDatepicker]="picker"
-               placeholder="Datum">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
+               [matDatepicker]="datePicker"
+               [readonly]="true"
+               placeholder="Monat">
+        <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+        <mat-datepicker #datePicker
+                        startView="year"
+                        (monthSelected)="datePicker.close(); dateSelected($event)"></mat-datepicker>
     </mat-form-field>
 
-    <div *ngIf="data; else errOrSpinner" fxLayout="row" fxLayoutAlign="space-between">
-        <ngx-charts-bar-vertical-stacked [view]="[600, 400]"
-                                         [results]="data"
-                                         [xAxis]="true"
-                                         [yAxis]="true"
-                                         [legend]="true"
-                                         legendTitle=""
-                                         [showDataLabel]="true">
-        </ngx-charts-bar-vertical-stacked>
-
-        <ngx-charts-heat-map [view]="[600, 400]"
-                             [scheme]="{domain: colors}"
-                             [results]="data"
-                             [xAxis]="true"
-                             [yAxis]="true"
-                             [legend]="true"
-                             legendTitle="">
-        </ngx-charts-heat-map>
+    <div *ngIf="data; else errOrSpinner" fxLayout="row">
+        <div class="chart" fxLayout="column" fxFlex="50">
+            <ngx-charts-bar-vertical-stacked [results]="data"
+                                             [xAxis]="true"
+                                             [yAxis]="true"
+                                             [legend]="true"
+                                             legendTitle=""
+                                             [showDataLabel]="true">
+            </ngx-charts-bar-vertical-stacked>
+        </div>
+        <div class="chart" fxLayout="column" fxFlex>
+            <ngx-charts-heat-map [scheme]="{domain: colors}"
+                                 [results]="data"
+                                 [innerPadding]="3"
+                                 [xAxis]="true"
+                                 [yAxis]="true"
+                                 [legend]="true"
+                                 legendTitle="">
+            </ngx-charts-heat-map>
+        </div>
     </div>
 
     <ng-template #errOrSpinner>
