@@ -10,7 +10,7 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <div *ngIf="data; else spinner" fxLayout="row" fxLayoutAlign="space-between">
+    <div *ngIf="data; else errOrSpinner" fxLayout="row" fxLayoutAlign="space-between">
         <ngx-charts-bar-vertical-stacked [view]="[600, 400]"
                                          [results]="data"
                                          [xAxis]="true"
@@ -30,7 +30,10 @@
         </ngx-charts-heat-map>
     </div>
 
-    <ng-template #spinner>
-        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+    <ng-template #errOrSpinner>
+        <p *ngIf="err; else spinner">{{err}}</p>
+        <ng-template #spinner>
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </ng-template>
     </ng-template>
 </div>

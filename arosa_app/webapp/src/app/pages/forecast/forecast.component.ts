@@ -12,6 +12,7 @@ import { ForecastService } from '../../services/forecast.service';
 })
 export class ForecastComponent implements OnInit {
 
+  public err: any;
   public date: Moment = moment();
   public data: ChartData[];
   public colors: string[] = [
@@ -34,7 +35,8 @@ export class ForecastComponent implements OnInit {
 
   public updateData(): void {
     this.data = undefined;
+    this.err = undefined;
     this.forecastService.getPredictions(this.date)
-      .subscribe(data => this.data = ChartService.mapToChartData(data));
+      .subscribe(data => this.data = ChartService.mapToChartData(data), err => this.err = err.message);
   }
 }

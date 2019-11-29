@@ -6,3 +6,6 @@
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
 palygorund_rm.ipynb
+
+# Intellij
+*.iml
