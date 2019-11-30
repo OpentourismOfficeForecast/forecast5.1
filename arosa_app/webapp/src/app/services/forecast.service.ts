@@ -13,6 +13,7 @@ export class ForecastService {
   }
 
   public getPredictions(timestamp: Moment): Observable<ForecastEntry[]> {
-    return this.http.get<ForecastEntry[]>(`http://localhost:5000/forecast/${timestamp.year()}/${timestamp.month()}`);
+    // moment months are 0 indexed, backend expects one indexed
+    return this.http.get<ForecastEntry[]>(`http://localhost:5000/forecast/${timestamp.year()}/${timestamp.month() + 1}`);
   }
 }

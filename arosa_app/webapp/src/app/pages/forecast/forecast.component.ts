@@ -23,7 +23,7 @@ import { ForecastService } from '../../services/forecast.service';
 export class ForecastComponent implements OnInit {
 
   public err: any;
-  public date: Moment = moment();
+  public date: Moment = moment().add(1, 'month').startOf('month');
   public data: ChartData[];
   public colors: string[] = [
     '#ffab00',
