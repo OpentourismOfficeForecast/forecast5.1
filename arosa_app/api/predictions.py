@@ -71,7 +71,8 @@ def load_predictions(file, delimiter=';'):
 
 
 
-if __name__ == "__main__":
-    get_predictions(2019,10)
-    #pred = load_predictions('../predictions/rf1.csv')
+#if __name__ == "__main__":
+    #get_predictions(2019,10)
+    #pred = load_predictions('../predictions/model_2019_8.csv')
+    #print(pred.head())
 
