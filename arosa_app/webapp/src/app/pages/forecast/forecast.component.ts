@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MAT_DATE_FORMATS, MatDateFormats } from '@angular/material/core';
+import { MatDatepicker } from '@angular/material/datepicker';
 import * as moment from 'moment';
 import { Moment } from 'moment';
 import { ChartData } from '../../models/chart-data';
@@ -8,12 +10,20 @@ import { ForecastService } from '../../services/forecast.service';
 @Component({
   selector: 'app-forecast',
   templateUrl: './forecast.component.html',
-  styleUrls: ['./forecast.component.scss']
+  styleUrls: ['./forecast.component.scss'],
+  viewProviders: [
+    {provide: MAT_DATE_FORMATS, useValue: {
+        display: {
+          dateInput: 'MMMM YYYY'
+        }
+      } as MatDateFormats
+    }
+  ]
 })
 export class ForecastComponent implements OnInit {
 
   public err: any;
-  public date: Moment = moment();
+  public date: Moment = moment().add(1, 'month').startOf('month');
   public data: ChartData[];
   public colors: string[] = [
     '#ffab00',
@@ -38,5 +48,10 @@ export class ForecastComponent implements OnInit {
     this.err = undefined;
     this.forecastService.getPredictions(this.date)
       .subscribe(data => this.data = ChartService.mapToChartData(data), err => this.err = err.message);
+  }
+
+  public dateSelected(date: Moment): void {
+    this.date = date;
+    this.updateData();
   }
 }
