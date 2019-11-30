@@ -15,10 +15,16 @@ def get_predictions(year, month):
 
     # predictfunction    
     pred_arr = []
-    #predictions = pd.DataFrame(data = date_range,columns=['Datum'])
     file_name = '../predictions/model_'+str(year)+'_'+str(month)+'.csv'
-    predictions = load_predictions(file_name)
-    predictions = predictions.round()
+    
+    try:
+        predictions = load_predictions(file_name)
+        predictions = predictions.round()
+    except:
+        print("An exception occurred")
+        predictions = pd.DataFrame(data = date_range,columns=['Datum'])
+        
+
     
     #pred_mail = np.random.randint(low=1, high=100)
     #pred_counter = np.random.randint(low=1, high=100)
@@ -72,7 +78,7 @@ def load_predictions(file, delimiter=';'):
 
 
 
-#if __name__ == "__main__":
-    #get_predictions(2019,10)
+if __name__ == "__main__":
+    get_predictions(2019,10)
     #pred = load_predictions('../predictions/rf1.csv')
 
