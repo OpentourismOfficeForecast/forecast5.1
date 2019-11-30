@@ -13,7 +13,8 @@ def get_predictions(year, month):
 
     date_range = pd.date_range(start_date,end_date, freq='D').strftime("%Y-%m-%d").tolist()
 
-    # predictfunction    
+    # predictfunction  
+    # do predictions
     pred_arr = []
     file_name = '../predictions/model_'+str(year)+'_'+str(month)+'.csv'
     
