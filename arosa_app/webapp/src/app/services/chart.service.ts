@@ -6,10 +6,16 @@ export class ChartService {
 
   public static mapToChartData(entries: ForecastEntry[]): ChartData[] {
     return entries.map(e => {
+      let date = moment(e.date, 'D.M.YYYY'); // usually dates are provided in this format
+      if (!date.isValid()) {
+        date = moment(e.date);
+      }
+
       return {
-        name: moment(e.date).format('DD.MM.'),
+        sortIndex: date.unix(),
+        name: date.format('DD.MM.'),
         series: Object.keys(e.predictions).map(key => ({name: key, value: e.predictions[key]})),
       };
-    });
+    }).sort((a, b) => a.sortIndex- b.sortIndex);
   }
 }

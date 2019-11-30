@@ -1,0 +1,12 @@
+FROM node:12-alpine
+
+WORKDIR /app
+
+# todo: multistage build (only packed html/js in final image)
+COPY package*.json /app/
+RUN npm ci
+
+COPY . /app
+
+# start app (only for the demos of the hackdays, use nginx or similar later)
+CMD ng serve --host 0.0.0.0  --port 8080
