@@ -8,20 +8,7 @@ export class ChartService {
     return entries.map(e => {
       return {
         name: moment(e.date).format('DD.MM.'),
-        series: [
-          {
-            name: "Tel",
-            value: e.predictions.tel,
-          },
-          {
-            name: "Mail",
-            value: e.predictions.mail,
-          },
-          {
-            name: "Schalter",
-            value: e.predictions.counter,
-          }
-        ],
+        series: Object.keys(e.predictions).map(key => ({name: key, value: e.predictions[key]})),
       };
     });
   }
