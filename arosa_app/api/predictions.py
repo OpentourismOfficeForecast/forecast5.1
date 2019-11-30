@@ -16,8 +16,9 @@ def get_predictions(year, month):
     # predictfunction    
     pred_arr = []
     #predictions = pd.DataFrame(data = date_range,columns=['Datum'])
-    predictions = load_predictions('../predictions/rf1.csv')
-    predictions = predictions.round(1)
+    file_name = '../predictions/model_'+str(year)+'_'+str(month)+'.csv'
+    predictions = load_predictions(file_name)
+    predictions = predictions.round()
     
     #pred_mail = np.random.randint(low=1, high=100)
     #pred_counter = np.random.randint(low=1, high=100)
