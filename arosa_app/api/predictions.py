@@ -24,13 +24,12 @@ def get_predictions(year, month):
         print("An exception occurred")
         predictions = pd.DataFrame(data = date_range,columns=['Datum'])
         
-
-    
-    #pred_mail = np.random.randint(low=1, high=100)
-    #pred_counter = np.random.randint(low=1, high=100)
-    #pred_tel = np.random.randint(low=1, high=100)
     
     for index,row in predictions.iterrows():
+        
+        pred_mail = 0
+        pred_counter = 0
+        pred_tel = 0
         
         # check predictions dataframe for 'Datum'
         if 'Datum' in predictions.columns:
@@ -41,20 +40,14 @@ def get_predictions(year, month):
         # check predictions dataframe for 'Mail'
         if 'Mail' in predictions.columns:
             pred_mail = row['Mail']
-        else:
-            pred_mail = 0
 
         # check predictions dataframe for 'Schalter'
         if 'Schalter' in predictions.columns:
             pred_counter = row['Schalter']
-        else:
-            pred_counter = 0
 
         # check predictions dataframe for 'Tel'
         if 'Tel' in predictions.columns:
             pred_tel = row['Tel']
-        else:
-            pred_counter = 0
     
         
         pred_dict = {'date': date,  
