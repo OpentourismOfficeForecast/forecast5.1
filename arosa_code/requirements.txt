@@ -10,7 +10,7 @@ BayesianOptimization==0.0.0
 bleach==3.1.0
 bokeh==1.4.0
 cachetools==3.1.1
-certifi==2019.11.28
+certifi==2022.12.7
 chardet==3.0.4
 chart-studio==1.0.0
 confuse==1.0.0
